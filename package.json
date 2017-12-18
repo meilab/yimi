@@ -1,0 +1,39 @@
+{
+  "name": "yimi",
+  "version": "1.0.0",
+  "description": "A password generator for the PWA and wechat app",
+  "main": "brunch-config.js",
+  "scripts": {
+    "compile": "elm-make src/Main.elm --output js/elm.js",
+    "watch": "elm-live src/Main.elm --output js/app.js --pushstate --debug",
+    "postinstall": "elm package install -y",
+    "start": "brunch watch --server",
+    "prod": "brunch build --production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atom/electron-quick-start.git"
+  },
+  "keywords": [
+    "PWA",
+    "Elm",
+    "password"
+  ],
+  "dependencies": {
+    "clipboard": "^1.7.1",
+    "ramda": "^0.25.0"
+  },
+  "devDependencies": {
+    "auto-reload-brunch": "^2.7.1",
+    "babel-brunch": "~6.0.0",
+    "brunch": "^2.8.2",
+    "hmr-brunch": "^0.1.1",
+    "clean-css-brunch": "~2.0.0",
+    "css-brunch": "~2.0.0",
+    "elm-brunch": "^0.7.0",
+    "javascript-brunch": "~2.0.0",
+    "uglify-js-brunch": "~2.0.1"
+  },
+  "author": "meilab",
+  "license": "MIT"
+}

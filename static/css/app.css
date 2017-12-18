@@ -1,0 +1,634 @@
+html {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    font-family: sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #fbf7ed;
+    color: #434343;
+}
+
+p {
+    line-height: 1.6em;
+}
+
+h1, h2 {
+    padding: 0;
+    margin: 0;
+}
+
+h3 {
+    margin: 15px 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+nav  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: center;
+}
+
+.HeaderNavWrapper {
+    display: none;
+}
+
+.Layout, .IntroLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Layout {
+    margin-top: 64px;
+}
+
+.ContentContainer {
+    flex: 1;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 759px;
+    padding: 1em;
+}
+
+.MarkdownWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.MarkdownContent {
+    width: 90%;
+    max-width: 759px;
+}
+
+.NavigationContentContainer {
+    width: 90vw;
+    min-height: calc(90vh - 64px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.NavigationMenuContainer {
+    width: 100%;
+    flex: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.NavigationMenuContainer  a {
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    padding: 10px;
+    color: #111111;
+}
+
+.GeneratorContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 759px;
+}
+
+.MetaContainer, .ServiceItemMetaContainer {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e4dad1;
+}
+
+.ServiceItemMetaContainer {
+    height: 25px;
+}
+
+.MetaItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 16px;
+}
+
+.CursorPoint {
+    cursor: pointer;
+}
+
+.GeneratorFormContainer {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e4dad1;
+}
+
+.GeneratorFormItem {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.CategorySelectorContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.MenuContainer, .MenuContainerVertical {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.MenuContainerVertical {
+    flex-direction: column;
+}
+
+.SideBarWrapper {
+    flex: 0 0 150px;
+}
+
+.SideBarWrapper.MenuInActive {
+    display: none;
+}
+
+.SideBarMenu {
+    position: fixed;
+    width: 150px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: rgba(164, 0, 48, 0.5);
+}
+
+.HeaderNavContainer, .FooterNavContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.HeaderNavContainer  a, .FooterNavContainer  a {
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    padding: 10px;
+    color: #111111;
+}
+
+.InfoPageHeaderNav  a {
+    color: #ffffff;
+}
+
+.MenuItem {
+    padding-left: 0.2rem;
+    border-radius: 8px;
+    min-width: 60px;
+    min-height: 40px;
+    cursor: pointer;
+}
+
+.MenuItem  a:hover {
+    background-color: #8A7667;
+}
+
+.MenuToggler {
+    position: fixed;
+    color: #ffffff;
+    padding: 5px;
+    left: 20px;
+    top: 20px;
+    border: 1px solid #dddddd;
+}
+
+.MenuToggler.MenuActive {
+    left: 170px;
+}
+
+.MenuToggler:hover {
+    background-color: #ffffff;
+    color: #111111;
+}
+
+.MenuToggler  li {
+    list-style-type: none;
+}
+
+.HeaderNav {
+    display: flex;
+    justify-content: center;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.HeaderNav  a {
+    color: #ffffff;
+}
+
+.HeaderNav  a:hover {
+    color: #FFDC00;
+}
+
+.HeaderNav  a:active {
+    color: #FFDC00;
+}
+
+.SearchBar {
+    width: 90%;
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #e4dad1;
+    background-color: #fbf7ed;
+    border-radius: 14px;
+    margin-bottom: 1em;
+}
+
+.SearchIcon {
+    flex: 0 0 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.SearchClear {
+    flex: 0 0 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.Searcher {
+    flex: 1;
+    height: 28px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #fbf7ed;
+    outline: 0;
+    border: 0;
+}
+
+.IconImg {
+    width: 3rem;
+    height: auto;
+}
+
+.ServiceContainer {
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ServiceItem {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    background-color: #fbf7ed;
+    border-bottom: 1px solid #e4dad1;
+    margin-bottom: 1em;
+    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.ServiceItem:hover {
+    background-color: #f1ece1;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.ServiceDescription {
+    width: 100%;
+    height: 30px;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ServiceCreatedTime {
+    flex: 0 0 120px;
+}
+
+.FolderListWrapper {
+    position: fixed;
+    top: 64px;
+    width: 100%;
+    z-index: 10;
+    background-color: #ffffff;
+}
+
+.FolderListWrapper.FolderListInActive {
+    display: none;
+}
+
+.FolderTransferWrapper {
+    position: fixed;
+    top: 128px;
+    width: 100%;
+    z-index: 10;
+    background-color: #ffffff;
+}
+
+.FolderTransferWrapper.FolderTransferInActive {
+    display: none;
+}
+
+.Disclaimer {
+    position: fixed;
+    bottom: 20px;
+    width: 90%;
+    max-width: 759px;
+}
+
+.DropdownContainer {
+    position: relative;
+    margin: 16px;
+    min-width: 120px;
+    display: inline-block;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.DropdownInput, .DropdownInputWithBorder {
+    padding: 0 12px 0 15px;
+    height: 22px;
+    margin: 0;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.DropdownInputWithBorder {
+    border: 1px solid #e4dad1;
+}
+
+.DropdownDisabled {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.DropdownText {
+    flex: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.DropdownList {
+    position: absolute;
+    top: 32px;
+    border-radius: 4px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.24);
+    padding: 4px 8px;
+    margin: 0;
+    width: 200px;
+    background-color: #fbf7ed;
+}
+
+.DropdownListItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 8px;
+    color: #7a706b;
+    border-bottom: 1px solid #f2f2f1;
+    cursor: pointer;
+}
+
+.DropdownListItem:hover {
+    background-color: #f5f2f1;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.Arrow {
+    position: absolute;
+    top: -16px;
+    left: 22px;
+    height: 1px;
+    width: 1px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #e2dcd6;
+    border-top: 7px solid transparent;
+}
+
+.GroupButton {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1em 0;
+}
+
+.GroupButtonDisabled {
+    display: none;
+}
+
+.Hero {
+    color: #ffffff;
+    width: 100%;
+    height: 40vh;
+    background-color: #222;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.Footer {
+    background-color: #fbf7ed;
+    color: #AAAAAA;
+    padding: 3em 10%;
+    text-align: center;
+    flex: 0 0 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.CopyRight {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.GithubIframe {
+    border: 0;
+}
+
+.Input {
+    height: 28px;
+    font-size: 14px;
+    background-color: #ffffff;
+    outline: 0;
+}
+
+.Result {
+    display: flex;
+    width: 90%;
+    font-size: 24px;
+}
+
+.FinalPass {
+    flex: 1 1 65%;
+    font-size: 24px;
+}
+
+.PostPreview {
+    display: flex;
+    width: 90%;
+    border-bottom: 1px solid #dddddd;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.PostPreview > a {
+    color: #404040;
+    text-decoration: none;
+}
+
+.PostPreview > a:hover {
+    text-decoration: none;
+    color: #0085a1;
+}
+
+.PostPreview > a:focus {
+    text-decoration: none;
+    color: #0085a1;
+}
+
+.PostPreviewTitle {
+    font-size: 21px;
+    line-height: 1.3em;
+    margin-top: 30px;
+    margin-bottom: 8px;
+}
+
+.PostPreviewSubtitle {
+    font-size: 15px;
+    line-height: 1.3em;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.PostPreviewMeta {
+    font-family: sans-serif;
+    color: #808080;
+    font-size: 16px;
+    font-style: italic;
+    margin-top: 0;
+}
+
+.MorePostsLink {
+    margin: 3em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.MorePostsLink  a {
+    color: #404040;
+    text-decoration: underline;
+    border: 1px solid #dddddd;
+}
+
+.MorePostsLink  a:hover {
+    text-decoration: none;
+    color: #0085a1;
+}
+
+.MorePostsLink  a:focus {
+    text-decoration: none;
+    color: #0085a1;
+}
+
+.PostContentPreview {
+    font-size: 13px;
+    font-style: italic;
+    color: #a3a3a3;
+}
+
+.PostContentPreview:hover {
+    color: #0085a1;
+}
+
+@media only screen and (min-width: 300px) {
+    .HeaderNavWrapper, .IntroNavWrapper {
+        top: 0;
+    height: 64px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+}
+
+@media only screen and (min-width: 300px) {
+    .IntroNavWrapper {
+        position: absolute;
+    }
+}
+
+@media only screen and (min-width: 300px) {
+    .HeaderNavWrapper {
+        position: fixed;
+    border: 1px solid #564944;
+    background-image: linear-gradient(#827265, #716053);
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.15);
+    }
+}
+
+@media only screen and (min-width: 300px) {
+    .HeaderNavContainer {
+        display: flex;
+    width: 90%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    }
+}
