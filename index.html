@@ -16,6 +16,14 @@
         <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
         <meta name="msapplication-TileColor" content="#2F3BA2">
         <script>
+            (function(){
+                var redirect = sessionStorage.redirect;
+                delete sessionStorage.redirect;
+                if (redirect && redirect != location.href) {
+                    history.replaceState(null, null, redirect);
+                }
+            })();
+
             // register service worker
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker
