@@ -3,7 +3,7 @@ module.exports = {
     paths: {
       watched: ["src", "static"],
       // Where to compile files to
-      public: "./"
+      public: "./public"
     },
     files: {
       javascripts: {
@@ -48,6 +48,10 @@ module.exports = {
           elmBrunch: {
             makeParameters: []
           }
+        },
+        paths: {
+          // Where to compile files to
+          public: "./"
         }
       }
     }
