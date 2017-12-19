@@ -17,7 +17,8 @@ var cacheName = 'elm-yimi-1';
 var filesToCache = [
   "./",
   "./index.html",
-  "./js/elm.js",
+  "./js/app.js",
+  "./localforage.min.js",
   "./css/app.css",
   "./images/cover4.jpg"
 ];

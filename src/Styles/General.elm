@@ -337,8 +337,7 @@ css =
                 [ display none ]
             ]
         , class Disclaimer
-            [ position fixed
-            , bottom (px 20)
+            [ marginTop (px 64)
             , width (pct 90)
             , maxWidth (px 759)
             ]

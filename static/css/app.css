@@ -370,8 +370,7 @@ nav  ul {
 }
 
 .Disclaimer {
-    position: fixed;
-    bottom: 20px;
+    margin-top: 64px;
     width: 90%;
     max-width: 759px;
 }
