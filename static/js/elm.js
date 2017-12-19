@@ -25996,7 +25996,7 @@ var _meilab$elm_wexin_crypto$Views$view = function (model) {
 	return contentView;
 };
 
-var _meilab$elm_wexin_crypto$Main$ghProjectName = 'elm_yimi';
+var _meilab$elm_wexin_crypto$Main$ghProjectName = 'yimi';
 var _meilab$elm_wexin_crypto$Main$init = function (location) {
 	var base_url = function () {
 		var _p0 = A2(
