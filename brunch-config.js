@@ -48,10 +48,6 @@ module.exports = {
           elmBrunch: {
             makeParameters: []
           }
-        },
-        paths: {
-          // Where to compile files to
-          public: "./"
         }
       }
     }

@@ -13254,6 +13254,17 @@ var _meilab$elm_wexin_crypto$Authors$authors = {
 	_1: {ctor: '[]'}
 };
 
+var _meilab$elm_wexin_crypto$Posts$githubPages = {
+	slug: '/github-pages',
+	route: _meilab$elm_wexin_crypto$Routing$PostsRoute('github-pages'),
+	title: '使用Github Pages来提供静态网页服务',
+	name: 'github-pages',
+	publishedDate: A3(_elm_community$elm_time$Time_Date$date, 2017, 12, 20),
+	author: _meilab$elm_wexin_crypto$Authors$wy,
+	markdown: _krisajenkins$remotedata$RemoteData$NotAsked,
+	preview: 'Github Pages支持用户通过软件仓库创建静态网站或静态博客，我们只需要将网站的代码上传，github.io就会为我们提供静态网页服务，非常方便',
+	hero: 'images/cover4.png'
+};
 var _meilab$elm_wexin_crypto$Posts$impossibleStates = {
 	slug: '/making-impossible-states-impossible',
 	route: _meilab$elm_wexin_crypto$Routing$PostsRoute('make-impossible-states-impossible'),
@@ -13324,7 +13335,11 @@ var _meilab$elm_wexin_crypto$Posts$posts = {
 				_1: {
 					ctor: '::',
 					_0: _meilab$elm_wexin_crypto$Posts$impossibleStates,
-					_1: {ctor: '[]'}
+					_1: {
+						ctor: '::',
+						_0: _meilab$elm_wexin_crypto$Posts$githubPages,
+						_1: {ctor: '[]'}
+					}
 				}
 			}
 		}
