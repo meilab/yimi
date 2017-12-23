@@ -14269,6 +14269,18 @@ var _meilab$elm_wexin_crypto$Update$getDragOffset = function (drag) {
 		return A2(_elm_lang$core$Basics$min, _meilab$elm_wexin_crypto$Models$dragOffsetThresh, _p0._0.current.x - _p0._0.start.x);
 	}
 };
+var _meilab$elm_wexin_crypto$Update$defaultConfig = A2(_meilab$elm_wexin_crypto$Types$ConfigToJs, 8, 'All');
+var _meilab$elm_wexin_crypto$Update$initService = F2(
+	function (time, name) {
+		return A5(_meilab$elm_wexin_crypto$Types$ServiceRecord, name, time, _meilab$elm_wexin_crypto$Update$defaultConfig, false, '全部密码');
+	});
+var _meilab$elm_wexin_crypto$Update$initSavedServices = F2(
+	function (time, names) {
+		return A2(
+			_elm_lang$core$List$map,
+			_meilab$elm_wexin_crypto$Update$initService(time),
+			names);
+	});
 var _meilab$elm_wexin_crypto$Update$changeUrlCommand = F3(
 	function (base_url, route, content) {
 		var _p1 = _elm_lang$core$Native_Utils.eq(route, _meilab$elm_wexin_crypto$Routing$HomeRoute) || (_elm_lang$core$Native_Utils.eq(route, _meilab$elm_wexin_crypto$Routing$GeneratorRoute) || _elm_lang$core$Native_Utils.eq(route, _meilab$elm_wexin_crypto$Routing$NavigationRoute));
@@ -14362,23 +14374,6 @@ var _meilab$elm_wexin_crypto$Update$update = F2(
 					_0: model,
 					_1: A2(_elm_lang$core$Task$perform, _meilab$elm_wexin_crypto$Messages$OnTime, _elm_lang$core$Time$now)
 				};
-			case 'SaveServiceSucc':
-				var generator = model.generator;
-				var newGenerator = _elm_lang$core$Native_Utils.update(
-					generator,
-					{service: '', password: ''});
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{savedServices: _p2._0, generator: newGenerator, stared: false}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'SaveServiceFail':
-				return A2(
-					_elm_lang$core$Debug$log,
-					_elm_lang$core$Basics$toString(_p2._0),
-					{ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none});
 			case 'OnTime':
 				var services = A2(
 					_elm_lang$core$List$filter,
@@ -14410,6 +14405,23 @@ var _meilab$elm_wexin_crypto$Update$update = F2(
 					_0: model,
 					_1: _meilab$elm_wexin_crypto$Storage$saveServices(newSavedServices)
 				};
+			case 'SaveServiceSucc':
+				var generator = model.generator;
+				var newGenerator = _elm_lang$core$Native_Utils.update(
+					generator,
+					{service: '', password: ''});
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{savedServices: _p2._0, generator: newGenerator, stared: false}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'SaveServiceFail':
+				return A2(
+					_elm_lang$core$Debug$log,
+					_elm_lang$core$Basics$toString(_p2._0),
+					{ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none});
 			case 'SelectService':
 				var _p10 = _p2._0;
 				var offset = function () {
@@ -14525,21 +14537,35 @@ var _meilab$elm_wexin_crypto$Update$update = F2(
 				};
 			case 'ReceiveServices':
 				var _p13 = _p2._0;
-				var newCmd = function () {
+				var newServices = function () {
 					var _p12 = _p13;
 					if (_p12.ctor === '[]') {
-						return _elm_lang$navigation$Navigation$newUrl(
-							A2(_elm_lang$core$Basics_ops['++'], model.url.base_url, '/generator'));
+						return A2(
+							_meilab$elm_wexin_crypto$Update$initSavedServices,
+							model.currentTime,
+							{
+								ctor: '::',
+								_0: '点击右上角+号进入生成密码页面',
+								_1: {
+									ctor: '::',
+									_0: '点击记录携带记录名称进入生成密码页面',
+									_1: {
+										ctor: '::',
+										_0: '左滑删除记录',
+										_1: {ctor: '[]'}
+									}
+								}
+							});
 					} else {
-						return _elm_lang$core$Platform_Cmd$none;
+						return _p13;
 					}
 				}();
 				return {
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
-						{savedServices: _p13}),
-					_1: newCmd
+						{savedServices: newServices}),
+					_1: _elm_lang$core$Platform_Cmd$none
 				};
 			case 'Tick':
 				return {

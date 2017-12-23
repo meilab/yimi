@@ -18,7 +18,6 @@ var filesToCache = [
   "./",
   "./index.html",
   "./js/app.js",
-  "./localforage.min.js",
   "./css/app.css",
   "./images/cover4.jpg"
 ];

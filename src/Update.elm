@@ -12,6 +12,8 @@ import Types
         , PasswordCategory(..)
         , FolderType(..)
         , Drag
+        , ConfigToJs
+        , ServiceRecord
         , ServiceItemOffset
         )
 import Password.Utils exposing (jsConfig2ElmConfig, elmConfig2JsConfig)
@@ -36,6 +38,21 @@ changeUrlCommand base_url route content =
 
         False ->
             FetchContent.fetch content base_url
+
+
+initSavedServices : Time -> List String -> List ServiceRecord
+initSavedServices time names =
+    names |> List.map (initService time)
+
+
+initService : Time -> String -> ServiceRecord
+initService time name =
+    ServiceRecord name time defaultConfig False "全部密码"
+
+
+defaultConfig : ConfigToJs
+defaultConfig =
+    ConfigToJs 8 "All"
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -104,26 +121,6 @@ update msg model =
         SaveService ->
             ( model, Task.perform OnTime Time.now )
 
-        SaveServiceSucc services ->
-            let
-                generator =
-                    model.generator
-
-                newGenerator =
-                    { generator | service = "", password = "" }
-            in
-                ( { model
-                    | savedServices = services
-                    , generator = newGenerator
-                    , stared = False
-                  }
-                , Cmd.none
-                )
-
-        SaveServiceFail err ->
-            Debug.log (toString (err))
-                ( model, Cmd.none )
-
         OnTime time ->
             let
                 folderType =
@@ -149,6 +146,26 @@ update msg model =
                         :: services
             in
                 ( model, (saveServices newSavedServices) )
+
+        SaveServiceSucc services ->
+            let
+                generator =
+                    model.generator
+
+                newGenerator =
+                    { generator | service = "", password = "" }
+            in
+                ( { model
+                    | savedServices = services
+                    , generator = newGenerator
+                    , stared = False
+                  }
+                , Cmd.none
+                )
+
+        SaveServiceFail err ->
+            Debug.log (toString (err))
+                ( model, Cmd.none )
 
         -- If dragOffset > threshold,
         -- we think it is drag and need to cancel clickhandler: do nothing
@@ -262,15 +279,15 @@ update msg model =
 
         ReceiveServices services ->
             let
-                newCmd =
+                newServices =
                     case services of
                         [] ->
-                            Navigation.newUrl (model.url.base_url ++ "/generator")
+                            initSavedServices model.currentTime [ "点击右上角+号进入生成密码页面", "点击记录携带记录名称进入生成密码页面", "左滑删除记录" ]
 
                         _ ->
-                            Cmd.none
+                            services
             in
-                ( { model | savedServices = services }, newCmd )
+                ( { model | savedServices = newServices }, Cmd.none )
 
         Tick time ->
             ( { model | currentTime = time }, Cmd.none )
