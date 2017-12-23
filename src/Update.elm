@@ -241,7 +241,7 @@ update msg model =
                         |> List.filter (\service -> service.service /= serviceName)
             in
                 ( { model | savedServices = newSavedServices }
-                , Cmd.none
+                , saveServices newSavedServices
                 )
 
         UpdateServiceFilter keyword ->
@@ -346,7 +346,7 @@ update msg model =
                     , serviceItemOffset = Nothing
                     , savedServices = newSavedServices
                   }
-                , Cmd.none
+                , saveServices newSavedServices
                 )
 
         NoOp ->

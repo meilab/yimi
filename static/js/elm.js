@@ -14485,7 +14485,7 @@ var _meilab$elm_wexin_crypto$Update$update = F2(
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
 						{savedServices: newSavedServices}),
-					_1: _elm_lang$core$Platform_Cmd$none
+					_1: _meilab$elm_wexin_crypto$Storage$saveServices(newSavedServices)
 				};
 			case 'UpdateServiceFilter':
 				return {
@@ -14634,7 +14634,7 @@ var _meilab$elm_wexin_crypto$Update$update = F2(
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
 						{drag: _elm_lang$core$Maybe$Nothing, serviceItemOffset: _elm_lang$core$Maybe$Nothing, savedServices: newSavedServices}),
-					_1: _elm_lang$core$Platform_Cmd$none
+					_1: _meilab$elm_wexin_crypto$Storage$saveServices(newSavedServices)
 				};
 			default:
 				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
