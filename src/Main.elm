@@ -17,7 +17,7 @@ import Pages
 
 ghProjectName : String
 ghProjectName =
-    "elm-yimi"
+    "Elm-Yimi"
 
 
 init : Location -> ( Model, Cmd Msg )
