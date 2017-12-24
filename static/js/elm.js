@@ -14616,25 +14616,36 @@ var _meilab$elm_wexin_crypto$Update$update = F2(
 				};
 			case 'DragEnd':
 				var offset = _meilab$elm_wexin_crypto$Update$getDragOffset(model.drag);
-				var newSavedServices = function () {
-					var _p19 = model.serviceItemOffset;
-					if (_p19.ctor === 'Just') {
-						return (_elm_lang$core$Native_Utils.cmp(offset, 0 - _meilab$elm_wexin_crypto$Models$dragOffsetThresh) < 0) ? A2(
-							_elm_lang$core$List$filter,
-							function (service) {
-								return !_elm_lang$core$Native_Utils.eq(service.service, _p19._0.name);
-							},
-							model.savedServices) : model.savedServices;
+				var _p19 = function () {
+					var _p20 = model.serviceItemOffset;
+					if (_p20.ctor === 'Just') {
+						if (_elm_lang$core$Native_Utils.cmp(offset, 0 - _meilab$elm_wexin_crypto$Models$dragOffsetThresh) < 0) {
+							var services = A2(
+								_elm_lang$core$List$filter,
+								function (service) {
+									return !_elm_lang$core$Native_Utils.eq(service.service, _p20._0.name);
+								},
+								model.savedServices);
+							return {
+								ctor: '_Tuple2',
+								_0: services,
+								_1: _meilab$elm_wexin_crypto$Storage$saveServices(services)
+							};
+						} else {
+							return {ctor: '_Tuple2', _0: model.savedServices, _1: _elm_lang$core$Platform_Cmd$none};
+						}
 					} else {
-						return model.savedServices;
+						return {ctor: '_Tuple2', _0: model.savedServices, _1: _elm_lang$core$Platform_Cmd$none};
 					}
 				}();
+				var newSavedServices = _p19._0;
+				var newCmd = _p19._1;
 				return {
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
 						{drag: _elm_lang$core$Maybe$Nothing, serviceItemOffset: _elm_lang$core$Maybe$Nothing, savedServices: newSavedServices}),
-					_1: _meilab$elm_wexin_crypto$Storage$saveServices(newSavedServices)
+					_1: newCmd
 				};
 			default:
 				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};

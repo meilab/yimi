@@ -329,24 +329,28 @@ update msg model =
                 offset =
                     getDragOffset model.drag
 
-                newSavedServices =
+                ( newSavedServices, newCmd ) =
                     case model.serviceItemOffset of
                         Just { name } ->
                             if offset < -dragOffsetThresh then
-                                model.savedServices
-                                    |> List.filter (\service -> service.service /= name)
+                                let
+                                    services =
+                                        model.savedServices
+                                            |> List.filter (\service -> service.service /= name)
+                                in
+                                    ( services, saveServices services )
                             else
-                                model.savedServices
+                                ( model.savedServices, Cmd.none )
 
                         Nothing ->
-                            model.savedServices
+                            ( model.savedServices, Cmd.none )
             in
                 ( { model
                     | drag = Nothing
                     , serviceItemOffset = Nothing
                     , savedServices = newSavedServices
                   }
-                , saveServices newSavedServices
+                , newCmd
                 )
 
         NoOp ->
