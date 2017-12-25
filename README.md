@@ -3,6 +3,17 @@ This is a password generator written in Elm with PWA.
 ### folder structure
 * `src`: Elm source code
 * `static`: All the static assets, Images, js, css etc.
-* `public`: output of the **debug** build
-* `content`, `css`, `js`, `images`, `404.html`, `index.html`, `localforage.min.js`, `manifest.json`, `service-worker.js`: **production build** output, because I want to serve this site using Github Pages 
+* `public`: static file for the web page
 
+### How to use
+* install npm
+
+```javascript
+npm install -g elm
+npm install -g brunch
+npm install
+npm run postinstall
+
+npm start
+npm run prod
+```
